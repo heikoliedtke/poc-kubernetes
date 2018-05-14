@@ -1,16 +1,40 @@
-apiVersion: extensions/v1beta1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
-  name: rabbit-deploy
+  name: peter-rabbit
+  labels:
+          app: peter-rabbit
 spec:
   containers:
   - name: peter-rabbit
     image: rabbitmq
-    metadata:
-      labels:
-        app: peter-rabbit
- - name: consumer
-   image: heikoliedtke/consumer:1
-   metadata:
-     labels:
-       app: consumer
+---
+kind: Service
+apiVersion: v1
+metadata:
+        name: peter-rabbit
+spec:
+        selector:
+                app: peter-rabbit
+        ports:
+                - protocol: TCP
+                  port: 5672
+                  targetPort: 5672
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: rabbit-consumer
+spec:
+  containers:
+  - name: rabbit-consumer
+    image: heikoliedtke/consumer:1
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: rabbit-producer
+spec:
+  containers:
+  - name: rabbit-producer
+    image: heikoliedtke/producer:2
