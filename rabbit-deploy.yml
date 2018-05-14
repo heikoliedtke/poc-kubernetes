@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: rabbit-deploy
+spec:
+  containers:
+  - name: peter-rabbit
+    image: rabbitmq
+    metadata:
+      labels:
+        app: peter-rabbit
+ - name: consumer
+   image: heikoliedtke/consumer:1
+   metadata:
+     labels:
+       app: consumer
