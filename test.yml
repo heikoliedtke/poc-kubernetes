@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: rabbit-producer
+spec:
+  containers:
+  - name: rabbit-producer
+    image: heikoliedtke/producer:1

@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+        name: peter-rabbit
+spec:
+        selector:
+                app: peter-rabbit
+        ports:
+                - protocol: TCP
+                  port: 5672
+                  targetPort: 5672

@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: peter-rabbit
+  labels:
+          app: peter-rabbit
+spec:
+  containers:
+  - name: peter-rabbit
+    image: rabbitmq
