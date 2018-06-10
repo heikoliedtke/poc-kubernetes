@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: Pod
-metadata:
-  name: rabbit-consumer
-spec:
-  containers:
-  - name: rabbit-consumer
-    image: heikoliedtke/consumer:1
